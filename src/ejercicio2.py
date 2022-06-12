@@ -6,15 +6,16 @@
 """
 Implementar una función que obtenga los máximos, mínimos y promedio de una secuencia con números, retornando los valores como una tuple.
 """
-def secuenciador(numero):
-    contador_numeros = 0
-    cantidad_numeros = int(input("Ingrese la cantidad de numeros a analizar: "))
-    numero = int(input("Ingrese un numero: "))
-    secuencia = list(numero)
-    while contador_numeros <= cantidad_numeros:
-        numero = int(input("Ingrese otro numero: "))
-        secuencia = secuencia.append(numero)
-        contador_numeros = contador_numeros + 1
+def secuenciador(cantidad_numeros):
+    """
+    Esta función pide al usuario numeros y los transforma en una lista con la secuencia de numeros ingresados
+    """
+    secuencia = []
+    contador = 0
+    while contador < cantidad_numeros:
+        numero = int(input("Ingrese numero: "))
+        secuencia.append(numero)
+        contador = contador  + 1
     return secuencia
 
 def maximo(secuencia):
@@ -40,13 +41,24 @@ def minimo(secuencia):
             minimo = secuencia[0 + contador]
         contador = contador + 1
     return minimo
-#def promedio(secuencia):
+def promedio(secuencia):
+    """
+    Esta función realiza el promedio de los numeros de la secuencia
+    """
+    suma_numeros = 0
+    contador = 0
+    while contador < len(secuencia):
+        suma_numeros = suma_numeros + secuencia[0 + contador]
+        contador = contador + 1
+    promedio = suma_numeros / len(secuencia)
+    return promedio
     
         
         
 def principal():
-    secuencia = 1,5,60,7,700
-    resultado = maximo(secuencia), minimo(secuencia) 
+    cantidad_numeros = int(input("Ingrese la cantidad de numeros a analizar: "))
+    secuencia = secuenciador(cantidad_numeros)
+    resultado = maximo(secuencia), minimo(secuencia), promedio(secuencia) 
     print(resultado)
     
 
